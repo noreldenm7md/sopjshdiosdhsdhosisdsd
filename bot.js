@@ -56,7 +56,7 @@ client.on("guildMemberAdd", function(member) {
               setTimeout(() => {
                 e.edit("تم التقديم")
               }, 3000)
-              rokzz.send(`
+              rokz.send(`
                 تقديم من ${rokz.author}
 
   الاسم :
