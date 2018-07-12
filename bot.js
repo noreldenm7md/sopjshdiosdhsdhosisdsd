@@ -52,7 +52,7 @@ if(gg) {
 gg.send({embed : new Discord.RichEmbed()
 .setTitle('**تقديم رتبة بائع**')
 .setDescription(`**الاسم :question:  : \n ${lan}\nهل سبق وان كنت في متجر :link: :\n ${md} \nماذا ستبيع ? :\n ${br}  **`)  
-          .setFooter(`Codes Shop. :Codes:`);
+          .setFooter(`Codes Shop. :Codes:`)
 .setTimestamp()
 });
 }        
