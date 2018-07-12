@@ -16,14 +16,14 @@ client.on("guildMemberAdd", function(member) {
         const embed = new Discord.RichEmbed()
         .setColor(GRAY)
         .setAuthor(member.user.tag, member.user.avatarURL)
-        .setFooter("Welcome To Codes Shop.")
-         wc.sendEmbed(embed);
+        .setFooter("Welcome To Codes Shop.  ")
+        .setTimestamp()
+        return wc.sendEmbed(embed);
 });
-
 
 client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
-    await message.channel.send("`ما اسمك`").then(e => {
+    await message.channel.send("** :question: ما اسمك**").then(e => {
     let filter = m => m.author.id === message.author.id
     let lan = '';
     let md = '';
@@ -32,17 +32,17 @@ client.on('message', async message => {
     .then(collected => {
       lan = collected.first().content
       collected.first().delete()
-e.edit(`\`هل سبق وان كنت في متجر [${lan}]\``)
+e.edit(`**:question: هل سبق وان كنت في متجر **`)
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(co => {
   md = co.first().content
         co.first().delete()
-        e.edit(`\`ماذا ستبيع[${lan}]\``)
+        e.edit(`**:question: ماذا ستبيع**`)
 let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(col => {
   br = col.first().content
         col.first().delete()
-e.edit("`جاري التقديم علي طلبك...`").then(b => {
+e.edit("**جاري التقديم علي طلبك...**").then(b => {
         setTimeout(() => {
   b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
         },2000);
