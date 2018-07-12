@@ -50,8 +50,9 @@ var gg = message.guild.channels.find('name', 'التقديمات')
 if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
-.setTitle('**تقديم رتبة بائع :Codes:**')
-.setDescription(`الاسم : ${lan}\nهل سبق وان كنت في متجر : ${md} \nماذا ستبيع : ${br}  \nتم التقديم علي رتبة بائع بواسطة : \n${message.author.id}`)  
+.setTitle('**تقديم رتبة بائع**')
+.setDescription(`**الاسم :question:  : \n ${lan}\nهل سبق وان كنت في متجر :link: :\n ${md} \nماذا ستبيع ? :\n ${br}  **`)  
+          .setFooter(`Codes Shop. :Codes:`);
 .setTimestamp()
 });
 }        
