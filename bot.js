@@ -52,7 +52,7 @@ client.on("guildMemberAdd", function(member) {
 [${expe}]
 [${time}]
 [${lang}]`)
-              let rokzz = rokz.guild.channels.find("name", "تقديم")
+              let rokzz = rokz.guild.channels.find("name", "التقديمات")
               setTimeout(() => {
                 e.edit("تم التقديم")
               }, 3000)
