@@ -16,14 +16,13 @@ client.on("guildMemberAdd", function(member) {
         const embed = new Discord.RichEmbed()
         .setColor('#7e9091')
         .setAuthor(member.user.tag, member.user.avatarURL)
-        .setFooter("Welcome To Codes Shop.  ")
-        .setTimestamp()
+        .setFooter("Welcome To ArabBotsList.  ")
         return wc.sendEmbed(embed);
 });
 
 client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
-    await message.channel.send("** :question: ما اسمك**").then(e => {
+    await message.channel.send("** :question: ما اسم بوتك**").then(e => {
     let filter = m => m.author.id === message.author.id
     let lan = '';
     let md = '';
@@ -32,12 +31,12 @@ client.on('message', async message => {
     .then(collected => {
       lan = collected.first().content
       collected.first().delete()
-e.edit(`**:question: هل سبق وان كنت في متجر **`)
+e.edit(`**:question: ما مميزات بوتك **`)
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(co => {
   md = co.first().content
         co.first().delete()
-        e.edit(`**:question: ماذا ستبيع**`)
+        e.edit(`**:question: كم سيرفر وكم مستخدم لبوتك**`)
 let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(col => {
   br = col.first().content
@@ -50,8 +49,7 @@ var gg = message.guild.channels.find('name', 'التقديمات')
 if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
-.setTitle('**تقديم رتبة بائع**')
-.setDescription(`**الاسم :question:  : \n ${lan}\nهل سبق وان كنت في متجر :link: :\n ${md} \nماذا ستبيع ? :\n ${br}  **`)  
+.setDescription(`**الاسم :question:  : \n ${lan}\nالمميزات :link: :\n ${md} \nعدد السيرفرات والمستخدمين ? :\n ${br}  **`)  
           .setFooter(`Codes Shop.`)
 .setTimestamp()
 });
@@ -64,6 +62,40 @@ gg.send({embed : new Discord.RichEmbed()
  }
 })
 
+const developers = ["456641975932813345"]
+const adminprefix = "!";
+client.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!developers.includes(message.author.id)) return;
+      
+  if (message.content.startsWith(adminprefix + 'ply')) {
+    client.user.setGame(argresult);
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+     if (message.content === (adminprefix + "leave")) {
+    message.guild.leave();        
+  } else  
+  if (message.content.startsWith(adminprefix + 'wt')) {
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'ls')) {
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.send(`**✅   ${argresult}**`)
+  } else 
+  if (message.content.startsWith(adminprefix + 'st')) {
+    client.user.setGame(argresult, "https://www.twitch.tv/idk");
+      message.channel.send(`**✅**`)
+  }
+  if (message.content.startsWith(adminprefix + 'setname')) {
+  client.user.setUsername(argresult).then
+      message.channel.send(`Changing The Name To ..**${argresult}** `)
+} else
+if (message.content.startsWith(adminprefix + 'setavatar')) {
+  client.user.setAvatar(argresult);
+    message.channel.send(`Changing The Avatar To :**${argresult}** `);
+}
+});
 
 client.on('message', msg => {
   if (msg.author.bot) return;
@@ -89,53 +121,6 @@ client.on('message', msg => {
 }
 });
 
-var roles = {}; 
-
-client.on("message", message => {
-	var args = message.content.split(' ').slice(1); 
-	var msg = message.content.toLowerCase();
-	if( !message.guild ) return;
-	if( !msg.startsWith( prefix + 'role' ) ) return;
-	if( msg.toLowerCase().startsWith( prefix + 'rerole ;' ) ){
-		if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد سحب منه الرتبة**' );
-		if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد سحبها من الشخص**' );
-		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
-		var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first(); 
-		if( !role1 ) return message.reply( '**:x: يرجى وضع الرتبة المراد سحبها من الشخص**' );if( message.mentions.members.first() ){
-			message.mentions.members.first().removeRole( role1 );
-			return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم سحب من **');
-		}
-		if( args[0].toLowerCase() == "all" ){
-			message.guild.members.forEach(m=>m.removeRole( role1 ))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من الكل رتبة**');
-		} else if( args[0].toLowerCase() == "bots" ){
-			message.guild.members.filter(m=>m.user.bot).forEach(m=>m.removeRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من البوتات رتبة**');
-		} else if( args[0].toLowerCase() == "humans" ){
-			message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.removeRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم سحب من البشريين رتبة**');
-		} 	
-	} else {
-		if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد اعطائها الرتبة**' );
-		if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد اعطائها للشخص**' );
-		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
-		var role1 = message.guild.roles.filter( r=>r.name.toLowerCase().indexOf(role)>-1 ).first(); 
-		if( !role1 ) return message.reply( '**:x: يرجى وضع الرتبة المراد اعطائها للشخص**' );if( message.mentions.members.first() ){
-			message.mentions.members.first().addRole( role1 );
-			return message.reply('**:white_check_mark: [ '+role1.name+' ] رتبة [ '+args[0]+' ] تم اعطاء **');
-		}
-		if( args[0].toLowerCase() == "all" ){
-			message.guild.members.forEach(m=>m.addRole( role1 ))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء الكل رتبة**');
-		} else if( args[0].toLowerCase() == "bots" ){
-			message.guild.members.filter(m=>m.user.bot).forEach(m=>m.addRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء البوتات رتبة**');
-		} else if( args[0].toLowerCase() == "humans" ){
-			message.guild.members.filter(m=>!m.user.bot).forEach(m=>m.addRole(role1))
-			return	message.reply('**:white_check_mark: [ '+role1.name+' ] تم اعطاء البشريين رتبة**');
-		} 
-	} 
-});
 
 
 // THIS  MUST  BE  THIS  WAY
