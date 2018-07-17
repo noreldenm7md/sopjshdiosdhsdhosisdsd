@@ -50,7 +50,7 @@ if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
 .setDescription(`**الاسم :question:  : \n ${lan}\nالمميزات :link: :\n ${md} \nعدد السيرفرات والمستخدمين ? :\n ${br}  **`)  
-          .setFooter(`Codes Shop.`)
+          .setFooter(`Arab Bots List.`)
 .setTimestamp()
 });
 }        
