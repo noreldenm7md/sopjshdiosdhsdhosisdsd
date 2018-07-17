@@ -49,7 +49,7 @@ var gg = message.guild.channels.find('name', 'التقديمات')
 if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
-.setDescription(`**الاسم والايدي  :question:  : \n ${lan}\nالمميزات :link: :\n ${md} \nعدد السيرفرات والمستخدمين :question: :\n ${br}  **`)  
+.setDescription(`**  الأيدي :question:  : \n ${lan}\nالمميزات :link: :\n ${md} \nعدد السيرفرات والمستخدمين :question: :\n ${br}  **`)  
           .setFooter(`Arab Bots List.`)
 .setTimestamp()
 });
