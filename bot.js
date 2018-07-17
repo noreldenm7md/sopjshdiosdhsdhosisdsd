@@ -45,7 +45,7 @@ e.edit("**جاري التقديم علي طلبك...**").then(b => {
         setTimeout(() => {
   b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
         },2000);
-var gg = message.guild.channels.find('name', 'submissions')
+var gg = message.guild.channels.find('name', 'التقديمات')
 if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
@@ -61,6 +61,8 @@ gg.send({embed : new Discord.RichEmbed()
 })
  }
 })
+
+
 
 const developers = ["456641975932813345"]
 const adminprefix = "!";
@@ -125,9 +127,21 @@ client.on('message', msg => {
 client.on('guildMemberAdd', (member) => {
 let channel = client.channels.get('468619241310912522')
 if(member.user.bot) {
-channel.send(`**لقد قامت الأدارة بآضافة بوت جديد :sparkles: \n اسم البوت : ${member} **`)
+channel.send(`**لقد تم قبول البوت :white_check_mark:  \n اسم البوت : ${member} **`)
 }
 })
+
+  client.on('message',async message => {
+  let mention = message.mentions.members.first();
+  let acRoom = client.channels.get('466903510869475338');
+  if(message.content.startsWith(prefix + "رفض")) {
+  if(message.guild.id !== '423837637988843520') return;
+  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
+  if(!mention) return message.reply("منشن شخص");
+
+  acRoom.send(`** لقد تم رفض البوت :x: \n اسم البوت : *${mention}**`)
+  }
+});
 
 
 
