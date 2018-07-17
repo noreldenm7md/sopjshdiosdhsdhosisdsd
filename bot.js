@@ -22,7 +22,7 @@ client.on("guildMemberAdd", function(member) {
 
 client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
-    await message.channel.send("** :question: ما اسم بوتك**").then(e => {
+    await message.channel.send("** :question: ما اسم بوتك وما ايدي بوتك**").then(e => {
     let filter = m => m.author.id === message.author.id
     let lan = '';
     let md = '';
@@ -49,7 +49,7 @@ var gg = message.guild.channels.find('name', 'التقديمات')
 if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
-.setDescription(`**الاسم :question:  : \n ${lan}\nالمميزات :link: :\n ${md} \nعدد السيرفرات والمستخدمين ? :\n ${br}  **`)  
+.setDescription(`**الاسم والايدي  :question:  : \n ${lan}\nالمميزات :link: :\n ${md} \nعدد السيرفرات والمستخدمين :question: :\n ${br}  **`)  
           .setFooter(`Arab Bots List.`)
 .setTimestamp()
 });
