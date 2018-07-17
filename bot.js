@@ -45,7 +45,7 @@ e.edit("**جاري التقديم علي طلبك...**").then(b => {
         setTimeout(() => {
   b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
         },2000);
-var gg = message.guild.channels.find('name', 'التقديمات')
+var gg = message.guild.channels.find('name', 'submissions')
 if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
@@ -120,6 +120,14 @@ client.on('message', msg => {
     }
 }
 });
+
+
+client.on('guildMemberAdd', (member) => {
+let channel = client.channels.get('468619241310912522')
+if(member.user.bot) {
+channel.send(`**لقد قامت الأدارة بآضافة بوت جديد :sparkles: \n اسم البوت : ${member} **`)
+}
+})
 
 
 
