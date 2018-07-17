@@ -22,7 +22,7 @@ client.on("guildMemberAdd", function(member) {
 
 client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
-    await message.channel.send("** :question: ما اسم بوتك وما ايدي بوتك**").then(e => {
+    await message.channel.send("** :question:  ما ايدي بوتك**").then(e => {
     let filter = m => m.author.id === message.author.id
     let lan = '';
     let md = '';
