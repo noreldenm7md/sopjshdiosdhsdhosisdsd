@@ -132,7 +132,7 @@ channel.send(`**لقد تم قبول البوت :white_check_mark:  \n اسم ا
 })
 
 client.on('message', message => {
- if(message.content.startsWith('.')) {
+if(message.content === '.') {
   message.channel.send('**`اهلا وسهلا بك في السيرفر الأول لدعم البوتات العربية ` __Arab Bots List.__ :rose: `**')
  }
 });
