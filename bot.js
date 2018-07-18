@@ -131,16 +131,10 @@ channel.send(`**لقد تم قبول البوت :white_check_mark:  \n اسم ا
 }
 })
 
-  client.on('message',async message => {
-  let mention = message.mentions.members.first();
-  let acRoom = client.channels.get('466903510869475338');
-  if(message.content.startsWith(prefix + "رفض")) {
-  if(message.guild.id !== '423837637988843520') return;
-  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
-  if(!mention) return message.reply("منشن شخص");
-
-  acRoom.send(`** لقد تم رفض البوت :x: \n اسم البوت : *${mention}**`)
-  }
+client.on('message', message => {
+ if(message.content.startsWith('.')) {
+  message.channel.send('**`اهلا وسهلا بك في السيرفر الأول لدعم البوتات العربية ` __Arab Bots List.__ :rose: `**')
+ }
 });
 
 
