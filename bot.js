@@ -21,6 +21,43 @@ client.on("guildMemberAdd", function(member) {
 });
 
 client.on('message', async message => {
+ 
+  if(message.author.bot) return;
+ 
+  if(message.content.startsWith(prefix + 'خاص')) {
+    let args = message.content.split(' ').slice(3);
+   
+    let mens = message.mentions.members;
+    let array = mens.array();
+   
+    let bot = array[0];
+   
+   let role = message.guild.roles.find('name', `${bot.user.username}`)
+   if(!role) return message.reply('لم استطيع ايجاد اي رتبة بإسم البوت');
+   
+   await message.guild.createChannel(`${bot.user.username}`, 'text', [
+    {
+      id: message.guild.id,
+      allow: ['READ_MESSAGES'],
+      deny: ['SEND_MESSAGES']
+   },
+   {
+    id: role.id,
+    allow: ['SEND_MESSAGES', 'READ_MESSAGES', 'MANAGE_CHANNEL', 'MANAGE_PERMISSIONS', 'MANAGE_WEBHOOKS', 'MANAGE_MESSAGES', 'MENTION_EVERYONE']
+   },
+   {
+   id: '468698595583983636',
+   deny: ['SEND_MESSAGES']
+   },
+   {
+   id: '468688774885277698',
+   deny: ['SEND_MESSAGES']
+   }
+    ])
+  }
+})
+
+client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
     await message.channel.send("** :question:  ما ايدي بوتك**").then(e => {
     let filter = m => m.author.id === message.author.id
