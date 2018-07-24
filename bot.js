@@ -32,7 +32,7 @@ client.on('message', async message => {
    
     let bot = array[0];
    
-   let role = message.guild.roles.find('name', `${bot.user.username}`)
+   let role = message.guild.roles.find('name', `❃ - ${bot.user.username}`)
    if(!role) return message.reply('لم استطيع ايجاد اي رتبة بإسم البوت');
    
    await message.guild.createChannel(`${bot.user.username}`, 'text', [
