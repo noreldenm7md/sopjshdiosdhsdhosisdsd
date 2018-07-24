@@ -53,7 +53,9 @@ client.on('message', async message => {
    id: '468688774885277698',
    deny: ['SEND_MESSAGES']
    }
-    ])
+    ]).then(ch => ch.setParent('469200362163929088'));
+   
+   message.channel.send('تم انشاء القناة بنجاح')
   }
 })
 
