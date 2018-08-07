@@ -61,7 +61,7 @@ client.on('message', async message => {
 
 client.on('message', async message => {
   if(message.content.startsWith(prefix + "تقديم")) {
-    await message.channel.send("** :question:  ما ايدي بوتك**").then(e => {
+    await message.channel.send("** :question:  حسنا, قم بكتابة ايدي البوت**").then(e => {
     let filter = m => m.author.id === message.author.id
     let lan = '';
     let md = '';
@@ -71,13 +71,13 @@ client.on('message', async message => {
       lan = collected.first().content
       collected.first().delete()
 e.delete();
-     message.channel.send('رائع, الأن قم بكتابة مميزات بوتك').then(m => {
+     message.channel.send('** رائع, الأن قم بكتابة مميزات بوتك :question:**').then(m => {
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(co => {
   md = co.first().content
         co.first().delete()
         m.delete();
-message.channel.send('حسنا, اخيرا قم بكتابة عدد السيرفرات والمتسخدمين').then(ms => {
+message.channel.send('**اخيرا وليس اخرا, قم بكتابة عدد السيرفرات والمستخدمين :question: **').then(ms => {
 let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(col => {
   br = col.first().content
