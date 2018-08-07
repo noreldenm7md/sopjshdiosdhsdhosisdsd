@@ -71,21 +71,20 @@ client.on('message', async message => {
       lan = collected.first().content
       collected.first().delete()
 e.delete();
-     message.channel.send('رائع, الأن قم بكتابة مميزات بوتك').then(msg => {
+     message.channel.send('رائع, الأن قم بكتابة مميزات بوتك').then(m => {
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(co => {
   md = co.first().content
         co.first().delete()
-        msg.delete();
-})
-message.channel.send('حسنا, اخيرا قم بكتابة عدد السيرفرات والمتسخدمين').then(msg => {
+        m.delete();
+message.channel.send('حسنا, اخيرا قم بكتابة عدد السيرفرات والمتسخدمين').then(ms => {
 let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(col => {
   br = col.first().content
         col.first().delete()
 
-msg.delete()
-})
+ms.delete()
+
  message.channel.send('جاري التقديم ..').then(b => {
         setTimeout(() => {
   b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
@@ -99,6 +98,9 @@ gg.send({embed : new Discord.RichEmbed()
 .setTimestamp()
 });
 }        
+})
+})
+})
 })
 })
 })
