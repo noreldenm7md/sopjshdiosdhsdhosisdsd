@@ -70,17 +70,23 @@ client.on('message', async message => {
     .then(collected => {
       lan = collected.first().content
       collected.first().delete()
-e.edit(`**:question: ما مميزات بوتك **`)
+e.delete();
+     message.channel.send('رائع, الأن قم بكتابة مميزات بوتك').then(msg => {
 let chaMd = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(co => {
   md = co.first().content
         co.first().delete()
-        e.edit(`**:question: كم سيرفر وكم مستخدم لبوتك**`)
+        msg.delete();
+})
+message.channel.send('حسنا, اخيرا قم بكتابة عدد السيرفرات والمتسخدمين').then(msg => {
 let br = message.channel.awaitMessages(filter, { max: 1, time: 40000, errors: ['time'] })
 .then(col => {
   br = col.first().content
         col.first().delete()
-e.edit("**جاري التقديم علي طلبك...**").then(b => {
+
+msg.delete()
+})
+ message.channel.send('جاري التقديم ..').then(b => {
         setTimeout(() => {
   b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت**`)
         },2000);
