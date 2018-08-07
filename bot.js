@@ -97,10 +97,9 @@ gg.send({embed : new Discord.RichEmbed()
           .setFooter(`Arab Bots List.`)
 .setTimestamp()
 });
+});
+});
 }        
-})
-})
-})
 })
 })
 })
