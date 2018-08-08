@@ -21,7 +21,7 @@ client.on('message', (message) => {
    
      let bots = message.guild.members.filter(m => m.user.bot && m.user.presence.status === 'offline');
      let map = bots.map(bo => {
-       bot += `#${i} - <@${bo.user.id}>\n`
+       bot += `#${++i} - <@${bo.user.id}>\n`
      })
      
      message.channel.send(bot);
