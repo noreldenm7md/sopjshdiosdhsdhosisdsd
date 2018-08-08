@@ -11,6 +11,24 @@ client.on('message', message => {
   	}
 });
 
+client.on('message', (message) => {
+   if(message.author.bot) return;
+ 
+   if(message.content === '!alloffline') {
+    
+    let bot;
+    let i = 0;
+   
+     let bots = message.guild.members.filter(m => m.user.bot && m.user.presence.status === 'offline');
+     let map = bots.map(bo => {
+       bot += `#${i} - <@${bo.user.id}>\n`
+     })
+     
+     message.channel.send(bot);
+    
+   }
+})
+
 client.on("guildMemberAdd", function(member) {
     const wc = member.guild.channels.find("name", "welcome")
         const embed = new Discord.RichEmbed()
